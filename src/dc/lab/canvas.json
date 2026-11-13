@@ -1,0 +1,149 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "CH1.dc.html": {
+      "h": 1120,
+      "page": "char",
+      "title": "Nhân vật · Bản chốt",
+      "w": 1672,
+      "x": 0,
+      "y": 0
+    },
+    "CH2.dc.html": {
+      "h": 1200,
+      "page": "char",
+      "title": "Tuỳ chọn tạo hình",
+      "w": 1672,
+      "x": 1792,
+      "y": 0
+    },
+    "SB01.dc.html": {
+      "h": 800,
+      "page": "sb",
+      "title": "01 · Màn hình CRT",
+      "w": 1056,
+      "x": 0,
+      "y": 0
+    },
+    "SB02.dc.html": {
+      "h": 800,
+      "page": "sb",
+      "title": "02 · Hiện ra",
+      "w": 1056,
+      "x": 1136,
+      "y": 0
+    },
+    "SB03.dc.html": {
+      "h": 800,
+      "page": "sb",
+      "title": "03 · Prompt",
+      "w": 1056,
+      "x": 2272,
+      "y": 0
+    },
+    "SB04.dc.html": {
+      "h": 800,
+      "page": "sb",
+      "title": "04 · AI tạo",
+      "w": 1056,
+      "x": 3408,
+      "y": 0
+    },
+    "SB05.dc.html": {
+      "h": 800,
+      "page": "sb",
+      "title": "05 · Kéo chọn",
+      "w": 1056,
+      "x": 0,
+      "y": 920
+    },
+    "SB06.dc.html": {
+      "h": 800,
+      "page": "sb",
+      "title": "06 · Sắp xếp",
+      "w": 1056,
+      "x": 1136,
+      "y": 920
+    },
+    "SB07.dc.html": {
+      "h": 800,
+      "page": "sb",
+      "title": "07 · Vào chỗ",
+      "w": 1056,
+      "x": 2272,
+      "y": 920
+    },
+    "SB08.dc.html": {
+      "h": 800,
+      "page": "sb",
+      "title": "08 · Hero",
+      "w": 1056,
+      "x": 3408,
+      "y": 920
+    },
+    "PLAY2.dc.html": {
+      "h": 760,
+      "is_interactive": true,
+      "page": "sb",
+      "title": "▶ Xem intro 6s",
+      "w": 1056,
+      "x": 4544,
+      "y": 920
+    },
+    "HERO.dc.html": {
+      "h": 1044,
+      "page": "sb",
+      "title": "Hero · tự chỉnh",
+      "w": 1536,
+      "x": 4544,
+      "y": 1800,
+      "is_interactive": true
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-11-12T07:45:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "page": "sb",
+    "view": "canvas"
+  },
+  "notes": {
+    "sbtitle": {
+      "kind": "title1",
+      "maxW": 4464,
+      "page": "sb",
+      "text": "Storyboard intro 6 giây · 8 frame",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    }
+  },
+  "order": [
+    "PLAY2.dc.html",
+    "SB01.dc.html",
+    "SB02.dc.html",
+    "SB03.dc.html",
+    "SB04.dc.html",
+    "SB05.dc.html",
+    "SB06.dc.html",
+    "SB07.dc.html",
+    "SB08.dc.html",
+    "CH1.dc.html",
+    "CH2.dc.html",
+    "HERO.dc.html"
+  ],
+  "pages": [
+    {
+      "id": "sb",
+      "name": "Storyboard 6s"
+    },
+    {
+      "id": "char",
+      "name": "Nhân vật"
+    }
+  ],
+  "title": "Intro pixel – 5 kịch bản"
+}

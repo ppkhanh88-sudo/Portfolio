@@ -1,0 +1,90 @@
+/* Hero UI — shared look for every layout option (tokens + components). */
+:root {
+  --hu-ink: #141b33; --hu-ink2: #4a5470; --hu-paper: #ffffff; --hu-paper2: #eef1f8;
+  --hu-line: rgba(20, 27, 51, .12); --hu-accent: #ffc94a; --hu-accent-d: #f0b323; --hu-focus: #2563eb;
+  --hu-shadow: 0 12px 32px rgba(20, 27, 51, .18), 0 2px 6px rgba(20, 27, 51, .10);
+}
+.hu { font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; }
+.hu-display { font-family: 'Pixelify Sans', 'Courier New', ui-monospace, monospace; letter-spacing: 0 !important; }  /* the name only: pixel font to match the scene */
+.hu-canvas { position: absolute; left: 0; top: 0; display: block; image-rendering: pixelated; image-rendering: crisp-edges; }
+.hu svg.i { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.hu svg.i.sm { width: 18px; height: 18px; }
+
+/* surfaces */
+.hu-surface { background: rgba(255, 255, 255, .95); color: var(--hu-ink); border-radius: 16px; box-shadow: var(--hu-shadow); }
+
+/* nav links straight on the sky */
+.hu-link { font: 600 16px/1 'Roboto', system-ui, sans-serif; text-decoration: none; padding: 12px 14px; border-radius: 999px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; box-sizing: border-box; }
+.hu-link:hover { background: rgba(255, 255, 255, .55); color: var(--hu-ink) !important; text-shadow: none !important; }
+.hu-cta { background: var(--hu-ink); color: #fff !important; text-shadow: none !important; }
+.hu-cta:hover { background: #26304f; color: #fff !important; }
+
+/* icon buttons */
+.hu-ib { position: relative; width: 44px; height: 44px; border: 0; margin: 0; padding: 0; border-radius: 12px; background: transparent; color: var(--hu-ink); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.hu-ib:hover { background: var(--hu-paper2); }
+.hu-ib[aria-pressed="true"] { background: var(--hu-accent); color: var(--hu-ink); box-shadow: inset 0 -2px 0 var(--hu-accent-d); }
+.hu-ib:active { transform: translateY(1px); }
+.hu-sep { width: 1px; align-self: stretch; margin: 6px 4px; background: var(--hu-line); flex: none; }
+.hu-cap { font: 500 16px/1 'Roboto', system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--hu-ink2); }
+
+/* tooltips: label shows on hover / keyboard focus */
+.hu-tip::after { content: attr(data-tip); position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translateX(-50%); background: var(--hu-ink); color: #fff; font: 600 16px/1 'Roboto', system-ui, sans-serif; padding: 7px 9px; border-radius: 8px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .12s; z-index: 20; }
+.hu-tip.down::after { bottom: auto; top: calc(100% + 8px); }
+.hu-tip.left::after { left: auto; right: calc(100% + 10px); bottom: auto; top: 50%; transform: translateY(-50%); }
+.hu-tip:hover::after, .hu-tip:focus-visible::after { opacity: 1; }
+
+/* labelled segmented buttons (icon + text) */
+.hu-seg { min-width: 64px; min-height: 56px; border: 0; margin: 0; padding: 8px 6px; border-radius: 12px; background: transparent; color: var(--hu-ink); display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; font: 500 16px/1 'Roboto', system-ui, sans-serif; }
+.hu-seg:hover { background: var(--hu-paper2); }
+.hu-seg[aria-pressed="true"] { background: var(--hu-accent); box-shadow: inset 0 -2px 0 var(--hu-accent-d); font-weight: 600; }
+
+/* ask box */
+.hu-ask { display: flex; align-items: center; gap: 10px; margin: 0; padding: 6px 6px 6px 14px; background: #fff; border-radius: 16px; box-shadow: var(--hu-shadow); color: var(--hu-ink); }
+.hu-ask:focus-within { box-shadow: var(--hu-shadow), 0 0 0 3px rgba(37, 99, 235, .45); }
+.hu-input { flex: 1; min-width: 0; height: 44px; box-sizing: border-box; padding: 0 2px; border: 0; background: transparent; color: var(--hu-ink); font: 500 16px/1 'Roboto', system-ui, sans-serif; outline: none; }
+.hu-input::placeholder { color: #5f6884; }
+.hu-send { flex: none; width: 44px; height: 44px; border: 0; border-radius: 12px; cursor: pointer; background: var(--hu-accent); color: var(--hu-ink); display: inline-flex; align-items: center; justify-content: center; }
+.hu-send:hover { background: var(--hu-accent-d); }
+.hu-spark { flex: none; color: #c8890b; display: inline-flex; }
+
+/* suggestions */
+.hu-pop { position: absolute; left: 0; right: 0; top: calc(100% + 10px); z-index: 10; padding: 8px; }
+.hu-pop.up { top: auto; bottom: calc(100% + 10px); }
+.hu-opt { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 12px; border-radius: 10px; cursor: pointer; font-size: 16px; line-height: 1.3; color: var(--hu-ink); }
+.hu-opt:hover, .hu-opt[aria-selected="true"] { background: var(--hu-paper2); }
+.hu-chip { min-height: 40px; border: 0; margin: 0; padding: 0 14px; border-radius: 999px; background: rgba(255, 255, 255, .9); color: var(--hu-ink); font: 500 16px/1.2 'Roboto', system-ui, sans-serif; cursor: pointer; box-shadow: 0 2px 8px rgba(20, 27, 51, .12); text-align: left; }
+.hu-chip:hover { background: #fff; box-shadow: 0 4px 14px rgba(20, 27, 51, .18); }
+
+/* answer bubble */
+.hu-bubble { position: absolute; transform: translate(-50%, -100%); width: min(360px, 86vw); z-index: 6; }
+.hu-bubble-box { padding: 14px 16px; border-radius: 16px; background: #fff; color: var(--hu-ink); box-shadow: var(--hu-shadow); }
+.hu-bubble-tail { width: 16px; height: 16px; background: #fff; transform: rotate(45deg); margin: -9px auto 0; box-shadow: 4px 4px 8px rgba(20, 27, 51, .08); }
+.hu-q { margin: 0; font: 600 16px/1.35 'Roboto', system-ui, sans-serif; color: var(--hu-ink2); }
+.hu-a { margin: 6px 0 0; font-size: 16px; line-height: 1.55; }
+.hu-x { flex: none; width: 32px; height: 32px; margin: -6px -8px 0 0; border: 0; border-radius: 8px; background: transparent; color: var(--hu-ink2); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.hu-x:hover { background: var(--hu-paper2); color: var(--hu-ink); }
+.hu-typing { animation: hublink 1s steps(1) infinite; }
+@keyframes hublink { 50% { opacity: .35; } }
+
+/* focus */
+.hu-ib:focus-visible, .hu-seg:focus-visible, .hu-send:focus-visible, .hu-chip:focus-visible, .hu-x:focus-visible, .hu-fab:focus-visible { outline: 3px solid var(--hu-focus); outline-offset: 2px; }
+.hu-link:focus-visible { outline: 3px solid var(--hu-focus); outline-offset: 2px; }
+
+/* floating action buttons (layout E) */
+.hu-fab { min-height: 52px; border: 0; margin: 0; padding: 0 18px 0 14px; border-radius: 999px; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font: 600 16px/1 'Roboto', system-ui, sans-serif; box-shadow: var(--hu-shadow); }
+.hu-fab.round { width: 52px; padding: 0; justify-content: center; }
+
+@media (max-width: 720px) { .hu-hide-sm { display: none !important; } .hu-tip::after { display: none; } }
+/* phones: controls fit one row — slightly smaller buttons, no dividers or captions */
+@media (max-width: 480px) { .hu-link { padding: 12px 10px; font-size: 16px; } .hu-ib { width: 40px; height: 40px; } .hu-ctrl .hu-sep, .hu-ctrl .hu-cap { display: none; } .hu-ctrl { padding: 6px !important; } }
+/* very narrow phones (≤380px): everything still on one row */
+@media (max-width: 380px) { .hu-ib { width: 36px; height: 36px; } .hu-ib svg.i { width: 20px; height: 20px; } }
+@media (prefers-reduced-motion: reduce) { .hu-typing { animation: none; } }
+
+/* EN / VI language switch (header) */
+.lang-sw { display: inline-flex; padding: 3px; gap: 2px; border-radius: 999px; background: rgba(255,255,255,.72); box-shadow: 0 0 0 1px rgba(20,27,51,.10), 0 4px 12px rgba(20,27,51,.12); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); flex: none; }
+.lang-b { min-width: 40px; min-height: 36px; padding: 0 10px; border: 0; margin: 0; border-radius: 999px; background: transparent; color: #141b33; font: 600 16px/1 'Roboto', system-ui, sans-serif; letter-spacing: .04em; cursor: pointer; transition: background-color .15s, color .15s; }
+.lang-b:hover { background: rgba(20,27,51,.08); }
+.lang-b[aria-pressed="true"] { background: #141b33; color: #fff; }
+.lang-b:focus-visible { outline: 3px solid #2563eb; outline-offset: 2px; }
+@media (max-width: 380px) { .lang-b { min-width: 36px; min-height: 32px; padding: 0 8px; } }

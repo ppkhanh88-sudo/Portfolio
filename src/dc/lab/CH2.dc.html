@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Tuỳ chọn tạo hình</title>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Pixelify+Sans:wght@400;600&amp;display=swap">
+<style>
+body{margin:0}
+.px{image-rendering:pixelated;display:block}
+.card{background:#3C315B;border-radius:12px;display:flex;align-items:flex-end;justify-content:center;padding:16px}
+.lab{font-size:14px;line-height:20px;font-weight:500;color:#1A1A1A}
+.sub{font-size:12px;line-height:16px;color:#5C5C58}
+.chip{font-size:12px;line-height:16px;font-weight:500;padding:4px 12px;border-radius:999px;background:#E8E6F0;color:#1A1A1A}
+.sw{width:32px;height:32px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+</style>
+</helmet>
+<div style="width:1672px;height:1200px;box-sizing:border-box;padding:48px;background:#F4F4F2;color:#1A1A1A;font-family:Geist,sans-serif;display:flex;flex-direction:column;gap:40px">
+<span style="font-size:32px;line-height:40px;font-weight:600">Tuỳ chọn tạo hình</span>
+<div style="display:flex;flex-direction:column;gap:16px"><div style="display:flex;gap:16px;align-items:center"><span style="font-size:16px;line-height:24px;font-weight:600">Headphone</span><span class="chip" style="background:#FFA6CF">Đang dùng: H5</span></div>
+<img class="px" src="/assets/blob/cc3bc4fc13b2894a195adf06db756d73.png" width="1520" height="450" alt="5 kiểu headphone" style="border-radius:12px"></div>
+<div style="display:flex;flex-direction:column;gap:16px"><div style="display:flex;gap:16px;align-items:center"><span style="font-size:16px;line-height:24px;font-weight:600">Trang phục</span><span class="chip" style="background:#FFA6CF">Đang dùng: O1</span><span class="sub" title="Mỗi món đổi riêng được: kiểu áo (dài tay / hoodie), màu áo, quần jeans hay đầm, màu giày.">Tuỳ chỉnh từng món ⓘ</span></div>
+<img class="px" src="/assets/blob/02883bea18ab45eb99b10b99e51ccc76.png" width="1220" height="450" alt="4 bộ trang phục" style="border-radius:12px"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1672,"height":1200}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

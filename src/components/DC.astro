@@ -1,0 +1,17 @@
+---
+// Dựng 1 file .dc.html (Claude Design) thành trang chạy thật.
+// Dùng: <DC source={rawHtml} />   — rawHtml lấy bằng import x from '../dc/…/File.dc.html?raw'
+interface Props { source: string }
+const { source } = Astro.props;
+const json = JSON.stringify(source).replace(/</g, '\\u003c');
+---
+<div data-dc-host></div>
+<script type="application/json" data-dc-src set:html={json}></script>
+
+<script>
+  import { mountDC } from '../lib/dc-runtime.js';
+  document.querySelectorAll('[data-dc-host]').forEach((host) => {
+    const src = host.nextElementSibling;
+    if (src && src.matches('[data-dc-src]')) mountDC(JSON.parse(src.textContent), host);
+  });
+</script>
