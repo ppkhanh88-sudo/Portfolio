@@ -63,6 +63,10 @@ p,li,dd,blockquote{text-wrap:pretty}
 .step-visual{position:relative;width:100%;aspect-ratio:4/5;max-height:min(80vh,760px);border-radius:16px;overflow:hidden;border:1px dashed #4a4a4a;background:#1a1a1a}
 .vis{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,#232323 0,#232323 1px,transparent 1px,transparent 14px);opacity:0;transform:translateY(28px) scale(.985);transition:opacity .5s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
 .vis.on{opacity:1;transform:none}
+.vis.has-img{background:#1b1830}
+.vis-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vis-tag{z-index:2}
+img.step-img-sm{width:100%;height:auto!important;aspect-ratio:4/5!important;object-fit:contain;border-radius:12px}
 .vis-tag{position:absolute;top:16px;left:16px;font-size:var(--fs-s);color:#bdbdbd;border:1px solid #6b6b6b;border-radius:4px;padding:2px 6px}
 .vis-label{position:absolute;left:16px;right:16px;bottom:16px;font-size:var(--fs-s);line-height:1.5;color:#bdbdbd;background:#121212;padding:6px 10px;border-radius:6px;justify-self:start;width:fit-content;max-width:calc(100% - 32px);box-sizing:border-box}
 
@@ -149,7 +153,7 @@ p,li,dd,blockquote{text-wrap:pretty}
       <p style="margin: 12px 0 0; font-size: var(--fs-m); color: #a3a3a3;">icon, gom về 1 bộ chuẩn</p>
     </div>
     <div style="min-width: 0;">
-      <div class="big"><span>168</span><span style="color: #6b6b6b;">→</span><span>87</span></div>
+      <div class="big"><span>168</span><span style="color: #6b6b6b;">→</span><span>74</span></div>
       <p style="margin: 12px 0 0; font-size: var(--fs-m); color: #a3a3a3;">mã màu, gom về một thư viện màu chung</p>
     </div>
   </div>
@@ -202,7 +206,7 @@ p,li,dd,blockquote{text-wrap:pretty}
     
 
     <div class="stack" style="display: flex; gap: 24px;">
-      <div class="ph" style="flex: 1 1 0; min-width: 0; aspect-ratio: 21 / 9;"><span>HÌNH 02 · Collage component trùng: nhiều bản Icon button, Input search đặt cạnh nhau</span></div>
+      <img src="/assets/case-study/hinh02-select-v5.png" alt="Hai bản Select đang dùng song song, cùng label &quot;Select column&quot;: Bản A không có icon đầu, placeholder &quot;Choose a column&quot;, chữ disabled #C9C9C9; Bản B có icon cột 16px phía trước, placeholder &quot;Please select a column&quot;, chữ disabled text-disabled #8B8AA1, được chọn làm bản thống nhất. Cả hai có icon dropdown phía sau, mỗi bản ở 3 trạng thái Default, Filled, Disabled"Search...", chữ disabled #C9C9C9; Bản B có icon kính lúp 16px, placeholder "Search template by name", chữ disabled text-disabled #8B8AA1, được chọn làm bản thống nhất. Cùng label "Search template" Roboto Medium 14, mỗi bản ở 3 trạng thái Default, Filled, Disabled" style="display: block; flex: 1 1 0; min-width: 0; width: 100%; aspect-ratio: 21 / 9; object-fit: cover; border-radius: 12px; box-shadow: 0 0 0 1px #2e2e2e;">
     </div>
   </div>
 </section>
@@ -233,6 +237,7 @@ p,li,dd,blockquote{text-wrap:pretty}
                   </sc-for>
                 </dl>
                 <p class="step-result"><span class="pill-result">Kết quả</span><span>{{step.result}}</span></p>
+                <sc-if value="{{step.hasImg}}" hint-placeholder-val="{{false}}"><img class="step-fig-sm step-img-sm" src="/assets/case-study/hinh03-ai-detect-v5.png" alt="{{step.fig}}"></sc-if>
                 <sc-if value="{{step.isImg}}" hint-placeholder-val="{{true}}"><div class="ph step-fig-sm"><sc-if value="{{step.prio}}" hint-placeholder-val="{{false}}"><span class="prio">ƯU TIÊN LÀM ĐẸP NHẤT</span></sc-if><span>{{step.fig}}</span></div></sc-if>
                 <sc-if value="{{step.isText}}" hint-placeholder-val="{{false}}"><div class="step-txt-sm"><sc-for list="{{step.visLines}}" as="ln" hint-placeholder-count="3"><div class="vis-line">{{ln}}</div></sc-for></div></sc-if>
               </div>
@@ -243,6 +248,7 @@ p,li,dd,blockquote{text-wrap:pretty}
         <div class="step-visual" aria-hidden="true">
           <sc-for list="{{steps}}" as="step" hint-placeholder-count="5">
             <div class="{{step.visCls}}">
+              <sc-if value="{{step.hasImg}}" hint-placeholder-val="{{false}}"><img class="vis-img" src="/assets/case-study/hinh03-ai-detect-v5.png" alt="{{step.fig}}"></sc-if>
               <span class="vis-tag">{{step.num}}</span>
               <sc-if value="{{step.prio}}" hint-placeholder-val="{{false}}"><span class="prio">ƯU TIÊN LÀM ĐẸP NHẤT</span></sc-if>
               <sc-if value="{{step.isImg}}" hint-placeholder-val="{{true}}"><span class="vis-label">{{step.fig}}</span></sc-if>
@@ -319,8 +325,8 @@ p,li,dd,blockquote{text-wrap:pretty}
     <div class="ctx-row">
       <blockquote style="margin: 0; padding: 0 64px 0 0; display: flex; flex-direction: column; gap: 16px;">
         <span class="mono">Phản hồi từ dev</span>
-        <p style="margin: 0; font-size: var(--fs-m); line-height: 1.4; font-weight: 500;">Số lần trao đổi vướng mắc về design system giảm hẳn. Trước đây dev đôi khi phải tự đoán và tự code mà không qua designer. Giờ mỗi trường hợp đều rõ ràng, dev không phải đoán nữa.</p>
-        <span style="font-size: var(--fs-m); color: #a3a3a3;">— [CẦN BẠN ĐIỀN: vai trò, vd FE lead]</span>
+        <p style="margin: 0; font-size: var(--fs-m); line-height: 1.4; font-weight: 500;">Trước đây dev đôi khi phải tự đoán các trường hợp hoặc hỏi designer nhiều lần. Giờ mọi thứ đã rõ ràng trên trang thư viện.</p>
+        <span style="font-size: var(--fs-m); color: #a3a3a3;">— Dương Nguyễn, Front-end Lead</span>
       </blockquote>
       <ul style="margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 12px; font-size: var(--fs-m); line-height: 1.6; color: #d6d6d6;">
         <li>Dev tự tra cứu và lấy đúng component, không phải hỏi lại.</li>
@@ -381,24 +387,24 @@ p,li,dd,blockquote{text-wrap:pretty}
 const METRICS = [
   { k: 'Component (set tính là 1)', b: '201', a: '39' },
   { k: 'Variant', b: '805', a: '113' },
-  { k: 'Kiểu đặt tên', b: '2', a: '1' },
+  { k: 'Kiểu đặt tên', b: '5', a: '1' },
   { k: 'Icon (không tính cờ)', b: '336', a: '278' },
   { k: 'Icon lệch stroke', b: '~39%', a: '0%' },
-  { k: 'Mã màu trong component', b: '168', a: '87 token' },
+  { k: 'Mã màu trong component', b: '168', a: '74' },
   { k: 'Màu ngoài thư viện', b: '114', a: '0' }
 ];
 const STEPS = [
   { num: '01', title: 'Kiểm kê thư viện', lead: 'Muốn dọn thì phải biết mình đang có gì.',
     rows: [{ k: 'Tôi', v: 'Gom file design system Figma cũ làm điểm xuất phát.' }, { k: 'AI', v: 'Đếm component, variant, icon, màu; liệt kê nhóm tên nghi trùng và các kiểu đặt tên.' }],
     result: 'AI kiểm kê toàn bộ thư viện trong chưa đến 5 phút.',
-    fig: '', visTitle: 'Hơn 1.000 thành phần được AI quét', visLines: ['201 component · 805 variant · 336 icon', 'Trên 34 trang của file Figma cũ', 'Thời gian kiểm kê: chưa đến 5 phút'] },
+    img: 'assets/hinh03-ai-detect-v5.png', fig: 'HÌNH 03 · AI nhận diện icon trùng nghĩa khác hình và 5 kiểu đặt tên lẫn lộn, kèm bảng kết quả', visTitle: 'Hơn 1.000 thành phần được AI quét', visLines: ['201 component · 805 variant · 336 icon', 'Trên 34 trang của file Figma cũ', 'Thời gian kiểm kê: chưa đến 5 phút'] },
   { num: '02', title: 'Dọn component', lead: 'Một component, nhiều variant, một cách gọi tên.',
     rows: [{ k: 'Gộp', v: 'AI so sánh bản gần giống, đề xuất gộp thành set có type, size, state. Tôi rà soát và chọn gộp, giữ hay bỏ, vd 4 bản card về 1 dạng duy nhất.' }, { k: 'Đặt tên', v: 'AI gợi ý tên và đổi tên hàng loạt. Tôi cùng dev chọn cách viết thường, nối bằng gạch ngang, vd input-field.' }, { k: 'Review', v: 'Leader cùng tôi review lại toàn bộ thư viện, quyết định chỉnh sửa, giữ lại hay bỏ đi.' }],
-    result: '201 → 39 component · card 4 bản → 1 · 2 kiểu tên → 1.',
-    prio: true, fig: 'HÌNH 03 · Trước: nhiều bản button rời → Sau: 1 button set, tên viết thường nối gạch ngang' },
+    result: '201 → 39 component · card 4 bản → 1 · 5 kiểu tên → 1.',
+    fig: '[CẦN BẠN ĐIỀN] Hình minh hoạ cho bước Dọn component' },
   { num: '03', title: 'Chuẩn hoá icon và màu', lead: 'Một bộ icon, một bảng màu cho cả app.',
     rows: [{ k: 'Icon', v: 'AI rà stroke, size và icon trùng. Tôi tự rà icon khó nhận diện, chốt chuẩn và vẽ lại để user nhìn là hiểu ngay.' }, { k: 'Màu', v: 'AI tìm màu gần giống và màu ngoài thư viện. Tôi dựng thư viện màu theo Tailwind CSS, thang 50–950.' }],
-    result: '336 → 278 icon · 168 mã màu → 87 token.',
+    result: '336 → 278 icon · 168 → 74 mã màu.',
     fig: 'HÌNH 04 · Lưới icon trước / sau + bảng màu 50–950 với vai trò' },
   { num: '04', title: 'Do/don’t, trang thư viện', lead: 'Một trang web là nơi duy nhất để tìm component.',
     rows: [{ k: 'AI', v: 'Viết nháp cách dùng, do/don’t; dựng trang thư viện trên Claude Design.' }, { k: 'Tôi', v: 'Biên tập do/don’t, sắp xếp cấu trúc trang, kiểm tra nội dung.' }],
@@ -466,12 +472,14 @@ class Component extends DCLogic {
     const cp = (this.state && this.state.cp != null) ? this.state.cp : 0;
     return {
       metrics: METRICS,
-      cnt: { n2: String(Math.round(2 * cp)), n39: Math.round(39 * cp) + '%', n168: String(Math.round(168 * cp)) },
+      cnt: { n2: String(Math.round(5 * cp)), n39: Math.round(39 * cp) + '%', n168: String(Math.round(168 * cp)) },
       steps: STEPS.map((s, i) => Object.assign({}, s, {
         cls: i === a ? 'step on' : 'step',
-        visCls: (i === a ? 'vis on' : 'vis') + (s.fig ? '' : ' is-text'),
-        prio: !!s.prio,
-        isImg: !!s.fig,
+        visCls: (i === a ? 'vis on' : 'vis') + (s.fig ? '' : ' is-text') + (s.img ? ' has-img' : ''),
+        prio: !!s.prio && !s.img,
+        isImg: !!s.fig && !s.img,
+        hasImg: !!s.img,
+        img: s.img || '',
         isText: !s.fig,
         visLines: s.visLines || [],
         current: i === a ? 'step' : 'false',
