@@ -1,0 +1,60 @@
+---
+// Trang nội bộ: storyboard intro 8 frame + bảng nhân vật. Không có trên menu chính.
+// Mỗi artboard chạy trong iframe riêng (/b/...) để CSS các frame không đè nhau.
+import Base from '../../layouts/Base.astro';
+const sections = [
+  { title: 'Storyboard intro 6 giây', boards: [
+    ['hero/PLAY2', '▶ Xem intro 6s', 1056, 760],
+    ['lab/SB01', '01 · Màn hình CRT', 1056, 800],
+    ['lab/SB02', '02 · Hiện ra', 1056, 800],
+    ['lab/SB03', '03 · Prompt', 1056, 800],
+    ['lab/SB04', '04 · AI tạo', 1056, 800],
+    ['lab/SB05', '05 · Kéo chọn', 1056, 800],
+    ['lab/SB06', '06 · Sắp xếp', 1056, 800],
+    ['lab/SB07', '07 · Vào chỗ', 1056, 800],
+    ['lab/SB08', '08 · Hero', 1056, 800],
+    ['hero/HERO', 'Hero · tự chỉnh', 1536, 1044]
+  ]},
+  { title: 'Nhân vật', boards: [
+    ['lab/CH1', 'Nhân vật · Bản chốt', 1672, 1120],
+    ['lab/CH2', 'Tuỳ chọn tạo hình', 1672, 1200]
+  ]}
+];
+---
+<Base title="Lab · Storyboard & nhân vật" bg="#E9E8E4">
+  <main class="lab">
+    <a class="back" href="/">← Danh mục</a>
+    {sections.map((s) => (
+      <section>
+        <h2>{s.title}</h2>
+        <div class="grid">
+          {s.boards.map(([slug, title, w, h]) => (
+            <figure>
+              <figcaption><span>{title}</span><a href={`/b/${slug}/`} target="_blank" rel="noopener">Mở riêng ↗</a></figcaption>
+              <div class="frame" style={`--w:${w};--h:${h}`}>
+                <iframe src={`/b/${slug}/`} title={title} width={w} height={h} loading="lazy"></iframe>
+              </div>
+            </figure>
+          ))}
+        </div>
+      </section>
+    ))}
+  </main>
+</Base>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap');
+  .lab { font-family: Geist, system-ui, sans-serif; color: #1A1A1A; padding: 32px 24px 64px; max-width: 1720px; margin: 0 auto; }
+  .back { font-size: 14px; color: #5C5C58; text-decoration: none; }
+  .back:hover { color: #1A1A1A; }
+  h2 { font-size: 24px; line-height: 32px; font-weight: 600; margin: 32px 0 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); gap: 24px; }
+  figure { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  figcaption { display: flex; justify-content: space-between; gap: 8px; font-size: 14px; line-height: 20px; font-weight: 500; }
+  figcaption a { color: #5C5C58; font-weight: 400; text-decoration: none; }
+  figcaption a:hover { color: #1A1A1A; }
+  figcaption a:focus-visible, .back:focus-visible { outline: 2px solid #2563EB; outline-offset: 2px; border-radius: 4px; }
+  /* khung giữ tỉ lệ artboard, iframe thu nhỏ vừa khung */
+  .frame { position: relative; width: 100%; aspect-ratio: var(--w) / var(--h); overflow: hidden; border-radius: 12px; background: #F4F4F2; container-type: inline-size; }
+  .frame iframe { position: absolute; left: 0; top: 0; border: 0; transform-origin: 0 0; transform: scale(calc(100cqw / (var(--w) * 1px))); }
+</style>

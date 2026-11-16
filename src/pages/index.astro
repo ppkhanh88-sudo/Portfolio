@@ -1,0 +1,41 @@
+---
+// Danh mục mọi dự án trong repo. Thêm trang mới: thêm 1 dòng vào `items`.
+import Base from '../layouts/Base.astro';
+const items = [
+  { href: '/hero/', no: '01', title: 'Hero banner', note: 'Đảo nổi pixel, nhân vật gõ laptop, đổi giờ / thời tiết / nhạc' },
+  { href: '/intro/', no: '02', title: 'Intro 6 giây', note: 'Bản chạy thử: từ hỗn loạn tới hệ thống, làm cùng AI' },
+  { href: '/case-study/', no: '03', title: 'Case study · Design System Gridly', note: 'Dùng AI quy hoạch lại thư viện component' },
+  { href: '/design-system/', no: '04', title: 'Design System New', note: 'Trang tài liệu component, token, Light / Dark' },
+  { href: '/lab/', no: '05', title: 'Lab', note: 'Storyboard 8 frame, bảng nhân vật (nội bộ)' },
+  { href: '/old-hero/b/', no: '06', title: 'Hero cũ · có khung', note: 'Bản Pixel Hero Banner trước đây, để tham khảo' },
+  { href: '/old-hero/c/', no: '07', title: 'Hero cũ · không khung', note: 'Biến thể không khung của bản cũ' }
+];
+---
+<Base title="Khanh Phạm · Portfolio" bg="#F4F4F2">
+  <main>
+    <p class="eyebrow">Senior UI/UX Designer</p>
+    <h1>Khanh Phạm</h1>
+    <p class="lead">Mọi dự án portfolio, chuyển từ Claude Design sang code để sửa và cập nhật bằng Claude Code.</p>
+    <ol>
+      {items.map((it) => (
+        <li><a href={it.href}><span class="no">{it.no}</span><span class="t">{it.title}</span><span class="n">{it.note}</span><span class="go" aria-hidden="true">→</span></a></li>
+      ))}
+    </ol>
+  </main>
+</Base>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap');
+  main { font-family: Geist, system-ui, sans-serif; color: #1A1A1A; max-width: 760px; margin: 0 auto; padding: 96px 24px; }
+  .eyebrow { margin: 0 0 8px; font-size: 13px; line-height: 20px; font-weight: 500; color: #5C5C58; letter-spacing: .04em; text-transform: uppercase; }
+  h1 { margin: 0; font-family: Newsreader, Georgia, serif; font-size: 64px; line-height: 72px; font-weight: 400; }
+  .lead { margin: 16px 0 48px; font-size: 18px; line-height: 28px; color: #3A3A38; max-width: 56ch; }
+  ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid #DADAD6; }
+  li { border-bottom: 1px solid #DADAD6; }
+  a { display: grid; grid-template-columns: 40px minmax(0, 1fr) 24px; grid-template-areas: 'no t go' 'no n go'; column-gap: 16px; row-gap: 4px; padding: 20px 8px; color: inherit; text-decoration: none; border-radius: 8px; }
+  a:hover { background: #EBEBE7; }
+  a:focus-visible { outline: 2px solid #2563EB; outline-offset: 2px; }
+  .no { grid-area: no; font-size: 13px; line-height: 24px; color: #5C5C58; font-variant-numeric: tabular-nums; }
+  .t { grid-area: t; font-size: 18px; line-height: 24px; font-weight: 500; }
+  .n { grid-area: n; font-size: 14px; line-height: 20px; color: #5C5C58; }
+  .go { grid-area: go; align-self: center; color: #5C5C58; }
+</style>
